@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./layui/css/layui.css" />
+  <link rel="stylesheet" href="./style/iconfont.css" />
+  <link rel="stylesheet" href="./style/index.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1891347_hvnc0ivzyvs.css" />
+  <link rel="stylesheet" href="https://www.jq22.com/demo/colpick-jQuery-Color-Picker-master/css/colpick.css" />
+  <title>播放器观看页</title>
+</head>
+
+<body>
+  <div class="login" style="display:flex;">
+    <div class="box">
+      <h2>播放器SDK</h2>
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">appId</label>
+          <div class="layui-input-block">
+            <input type="text" name="appId" value="d317f559" required
+              lay-verify="required" placeholder="appId" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label">accountId</label>
+          <div class="layui-input-block">
+            <input type="text" name="accountId" value="10000127" required
+              lay-verify="required" placeholder="accountId" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">token</label>
+          <div class="layui-input-block">
+            <input type="text" name="token" value="access:d317f559:b3acfa862ae09232" required
+              lay-verify="required" placeholder="token" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">poster</label>
+          <div class="layui-input-block">
+            <input type="text" name="poster" value=""
+              placeholder="poster" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">type</label>
+          <div class="layui-input-block">
+            <select name="type" lay-verify="required" lay-filter="type">
+              <option value="live">live</option>
+              <option value="vod">vod</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">默认清晰度</label>
+          <div class="layui-input-block">
+            <select name="defaultDefinition" lay-verify="required" lay-filter="type">
+              <option value="same">原画 (same)</option>
+              <option value="720p">超清 (720p)</option>
+              <option value="480p">高清 (480p)</option>
+              <option value="360p">标清 (360p)</option>
+              <option value="a">音频 (a)</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item ">
+          <label class="layui-form-label">language</label>
+          <div class="layui-input-block">
+            <select name="language" lay-verify="required" lay-filter="type">
+              <option value="zh">zh</option>
+              <option value="en">en</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item roomId">
+          <label class="layui-form-label">roomId</label>
+          <div class="layui-input-block">
+            <input type="text" name="roomId" value="lss_706f5237" required
+              lay-verify="required" placeholder="roomId" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item liveType">
+          <label class="layui-form-label">liveType</label>
+          <div class="layui-input-block">
+            <input type="radio" name="liveType" id="type-auto" value="auto" title="自动" checked />
+            <input type="radio" name="liveType" id="type-hls" value="hls" title="hls" />
+            <input type="radio" name="liveType" id="type-flv" value="flv" title="flv" />
+            <input type="radio" name="liveType" id="type-rtmp" value="rtmp" title="rtmp" />
+          </div>
+        </div>
+
+        <div class="layui-form-item recordId" style="display:none;">
+          <label class="layui-form-label">recordId</label>
+          <div class="layui-input-block">
+            <input type="text" name="recordId" value="c3800da3" required
+              lay-verify="required" placeholder="recordId" autocomplete="off" class="layui-input" />
+          </div>
+        </div>
+
+        <div class="layui-form-item ">
+          <label class="layui-form-label">marquee</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="marquee" lay-skin="switch" lay-filter="marquee" lay-text="开启|关闭" />
+          </div>
+        </div>
+
+        <div class="layui-form-item ">
+          <label class="layui-form-label">watermark</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="watermark" lay-skin="switch" lay-filter="watermark" lay-text="开启|关闭" />
+          </div>
+        </div>
+
+
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">初始化播放器</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main" style="visibility: hidden;">
+
+    <div style="width: 200px; position: absolute; right: 0; top: 0; bottom: 0;">
+      <button class="vhy-tools-addBarrage">增加一条普通弹幕</button>
+      <button class="vhy-tools-addBarrage__emoji">增加一条表情弹幕</button>
+    </div>
+    <a href="" class="mobile" target="_blank">【移动端地址】</a>
+    <div id="videoNode"></div>
+    <div class="barrage-box">
+      <div class="switch" id="switchBtn">
+        <input type="checkbox" id="switch-button">
+        <label for="switch-button" class="button-label">
+          <span class="circle"></span>
+          <span class="text on">弹</span>
+          <span class="text off">弹</span>
+        </label>
+      </div>
+      <!-- 弹幕设置 -->
+      <div class="danmaku-settting" style="line-height: 50px;">
+        <i class="layui-icon layui-icon-set-fill" style="font-size: 30px; color: #fff; margin: 0 20px; vertical-align: bottom;"></i>
+      </div>
+      <!-- 弹幕设置-end -->
+
+      <div class="barrageInput-box">
+        <i class="layui-icon layui-icon-fonts-clear" id="danmaku-font"></i>
+        <div class="input-box">
+          <input placeholder="我想说~" name="barrageText" type="text">
+          <button class="sendBarrage">发送</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="marqueeOption" style="display:none;">
+    <form class="layui-from">
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">展示方式</label>
+          <div class="layui-input-block">
+            <input type="radio" name="displayType" value="0" lay-filter="displayType" title="滚动" checked>
+            <input type="radio" name="displayType" value="1" lay-filter="displayType" title="闪动">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文字</label>
+          <div class="layui-input-block">
+            <input type="text" name="text" value="跑马灯文字" required lay-verify="required" autocomplete="off"
+              placeholder="请输入文字" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">透明度</label>
+          <div class="layui-input-block">
+            <select name="alpha" lay-verify="required">
+              <option value="0">0%</option>
+              <option value="25">25%</option>
+              <option value="50">50%</option>
+              <option value="75">75%</option>
+              <option value="100" selected>100%</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">文字大小</label>
+          <div class="layui-input-block">
+            <select name="fontsize" lay-verify="required">
+              <option value="12">12</option>
+              <option value="16">16</option>
+              <option value="20">20</option>
+              <option value="24" selected>24</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">间隔时间</label>
+          <div class="layui-input-block">
+            <input type="text" name="interval" value="3" required lay-verify="required" autocomplete="off"
+              placeholder="请输入间隔时间" class="layui-input" />
+          </div>
+          <!-- <div class="layui-input-block">
+            <select name="interval" lay-verify="required">
+              <option value="10">10s</option>
+              <option value="20">20s</option>
+              <option value="30">30s</option>
+            </select>
+          </div> -->
+        </div>
+        <div class="layui-form-item marqueeSpeed">
+          <label class="layui-form-label">速度</label>
+          <div class="layui-input-block">
+            <select name="speed" lay-verify="required">
+              <option value="3000">快</option>
+              <option value="6000">中</option>
+              <option value="10000" selected>慢</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">位置</label>
+          <div class="layui-input-block">
+            <select name="position" lay-verify="required">
+              <option value="1">随机</option>
+              <option value="2">上</option>
+              <option value="3">中</option>
+              <option value="4">下</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="watermarkOption" style="display:none;">
+    <form class="layui-from">
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">图片路径</label>
+          <div class="layui-input-block">
+            <input type="text" name="url" value="https://www.vhall.com/public/static/images/index/new/logo.png" required
+              lay-verify="required" autocomplete="off" placeholder="请输入路径" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">对其方式</label>
+          <div class="layui-input-block">
+            <select name="align" lay-verify="required">
+              <option value="tl">左上</option>
+              <option value="tr">右上</option>
+              <option value="bl">左下</option>
+              <option value="br">右下</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">对应位置</label>
+          <div class="layui-input-block">
+            <select name="watermark_position" lay-verify="required">
+              <option value="20">20px</option>
+              <option value="40">40px</option>
+              <option value="60">60px</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">宽度</label>
+          <div class="layui-input-block">
+            <input type="text" name="sizeWidth" value="80" required lay-verify="required" autocomplete="off"
+              placeholder="请输入宽度" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">高度</label>
+          <div class="layui-input-block">
+            <input type="text" name="sizeHeight" value="35" required lay-verify="required" autocomplete="off"
+              placeholder="请输入高度" class="layui-input" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">透明度</label>
+          <div class="layui-input-inline">
+            <input type="text" name="alpha" required lay-verify="required" placeholder="请输入0-100的数字" value="100" autocomplete="off" class="layui-input">
+          </div>
+          <div class="layui-form-mid layui-word-aux">(%)</div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="danmakuOption" style="display:none;">
+    <!-- <form class="layui-from"> -->
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">显示区域</label>
+          <div class="layui-input-block">
+            <input type="radio" name="displayArea" value="[0,0.25]" title="1/4屏幕" checked>
+            <input type="radio" name="displayArea" value="[0,0.5]" title="半屏" >
+            <input type="radio" name="displayArea" value="[0,0.75]" title="3/4屏幕" >
+            <input type="radio" name="displayArea" value="[0,1]" title="全屏" >
+            <input type="radio" name="displayArea" value="[0.25, 0.75]" title="中" >
+            <input type="radio" name="displayArea" value="[0.75, 1]" title="下" >
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">不透明度</label>
+          <div class="layui-input-block">
+            <input type="number" max="100" min="1" value="80" step="1" class="layui-input" name="opacity">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">字体大小</label>
+          <div class="layui-input-block">
+            <input type="radio" name="fontSize" value="12" checked title="小">
+            <input type="radio" name="fontSize" value="25" title="中">
+            <input type="radio" name="fontSize" value="50" title="大">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">弹幕速度</label>
+          <div class="layui-input-block">
+            <input type="radio" name="speed" value="20000" title="慢">
+            <input type="radio" name="speed" value="10000" checked title="中">
+            <input type="radio" name="speed" value="2000" title="快">
+          </div>
+        </div>
+      </div>
+    <!-- </form> -->
+  </div>
+
+  <!-- <div class="danmakuOptionFont" style="display:none;">
+    <form class="layui-from">
+      <div class="layui-form">
+        <div class="layui-form-item">
+          <label class="layui-form-label">显示区域</label>
+          <div class="layui-input-block">
+            <input type="radio" name="displayArea" value="[0,0.25]" title="1/4屏幕">
+            <input type="radio" name="displayArea" value="[0,0.5]" title="半屏" checked>
+            <input type="radio" name="displayArea" value="[0,0.75]" title="3/4屏幕" >
+            <input type="radio" name="displayArea" value="[0,1]" title="全屏" >
+            <input type="radio" name="displayArea" value="[0.25, 0.75]" title="中" >
+            <input type="radio" name="displayArea" value="[0.75, 1]" title="下" >
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">不透明度</label>
+          <div class="layui-input-block">
+            <input type="number" max="100" min="1" class="layui-input" name="opacity">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">字体大小</label>
+          <div class="layui-input-block">
+            <input type="radio" name="fontSize" value="12" title="小">
+            <input type="radio" name="fontSize" value="24" title="中">
+            <input type="radio" name="fontSize" value="40" title="大">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">弹幕速度</label>
+          <div class="layui-input-block">
+            <input type="radio" name="speed" value="3500" title="慢">
+            <input type="radio" name="speed" value="2500" title="中">
+            <input type="radio" name="speed" value="1500" title="快">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div> -->
+
+<script type="text/javascript" src="vhall-jssdk-player-2.3.5-1.js"></script></body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="./layui/layui.all.js"></script>
+
+<script type="text/javascript" src="js/qs.js"></script>
+
+<script src="https://www.jq22.com/demo/colpick-jQuery-Color-Picker-master/js/colpick.js"></script>
+<script src="./js/index.js"></script>
+</html>
