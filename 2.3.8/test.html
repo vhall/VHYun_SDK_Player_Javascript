@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src="https://static.vhallyun.com/jssdk/vhall-jssdk-player/latest/vhall-jssdk-player-2.3.3.js"></script>
+  <style type="text/css">
+    html, body{
+      width: 100%;
+      height: 100%;
+    }
+    #bs{
+      position: absolute;
+      z-index: 10000;
+      right: 10px;
+      bottom:30px;
+      color:red;
+      font-size:30px;
+    }
+    .flex{
+      display: flex
+    }
+    .btn{
+      background-color: #f5c0c0; width: 60px;text-align: center;cursor: pointer;margin-left:10px;
+    }
+
+    .player-box{
+      position: relative;
+      width: 90%;
+      margin: 40px auto;
+      overflow: hidden;
+    }
+    .player-box .player-poster{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      text-align: center;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+    }
+    .player-box .player-poster img{
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    .player-box .player-btn{
+      position: absolute;
+      z-index: 20;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="player-box">
+  <div id="my-video" style="width:100%;">
+  </div>
+  <div class="player-poster">
+    <img src="https://img1.baidu.com/it/u=424060393,2936295735&fm=26&fmt=auto&gp=0.jpg" alt="">
+  </div>
+  <div class="player-btn">
+    <img src="data:image/png;base64,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" alt="">
+  </div>
+</div>
+
+ <!--  <div id="bs">
+    <div>倍速</div>
+    <div class="flex">
+      <div id="bs_val_05" class="btn">0.5</div>
+      <div id="bs_val_1" class="btn">1</div>
+      <div id="bs_val_2" class="btn">2</div>
+    </div>
+
+  </div> -->
+  <script src="//cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>
+  <script type="text/javascript">
+  var vConsole = new VConsole()
+
+    // 创建实例参数
+    var opt = {
+      appId: '8234a13a', // 应用ID，必填
+      accountId: '16013', // 第三方用户ID，必填
+      token: 'vhall', // access_token，必填
+      type: 'vod', // live 直播  vod 点播  必填
+      videoNode: "my-video", // 播放器的容器， div的id 必填
+      // 封面地址  仅支持.jpg
+      autoplay: false,
+      vodOption: {
+        recordId: '6ae95347' // 回放 ID
+      }
+    };
+
+    // 创建实例
+    VhallPlayer.createInstance(opt, function (event) {
+      // 实例句柄
+     var vhallplayer = event.vhallplayer;
+
+     window.vhallplayer = vhallplayer;
+
+      // [0.5, 0.75, 1, 1.25, 1.5, 2, 3, 4]
+      vhallplayer.getUsableSpeed();
+
+      var video_dom = document.getElementById('my-video');
+
+      // 注册 暂停事件 -- 回调动作
+      // 微吼云 播放器 -- 文档  http://www.vhallyun.com/docs/show/363#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC
+      vhallplayer.on(VhallPlayer.PAUSE, function() {
+        document.querySelector('.player-btn').style.display = 'block'
+        document.querySelector('.player-poster').style.display = 'block'
+      })
+
+
+
+    }, function (event) {
+      //console.log(event);
+
+    });
+
+    window.addEventListener('load', function() {
+      // 注册 自实现 封面点击播放
+      document.querySelector('.player-btn').addEventListener('click', function() {
+        vhallplayer.play();
+        document.querySelector('.player-btn').style.display = 'none'
+        document.querySelector('.player-poster').style.display = 'none'
+      }, false);
+
+      // 注册暂停 展示封面
+
+    }, false)
+  </script>
+
+<script type="text/javascript" src="vhall-jssdk-player-2.3.8.js"></script></body>
+
+</html>
