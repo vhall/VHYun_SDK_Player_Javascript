@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.layui-btn+.layui-btn {
+  margin: 0;
+}
+
+body {
+  /* height: 100vh; */
+  /* background: #141419; */
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1rem;
+  padding-right: 0.5rem;
+}
+
+.login h2 {
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .video-box {
+  width: 100%;
+  height: 4rem;
+  overflow: hidden;
+  background: #000000;
+}
+
+.container .video-box .qualityBtn {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 0 0.1rem;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.container .video-box .speed-box, .container .video-box .quality-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .video-box .speed-box span, .container .video-box .quality-box span {
+  color: #fff;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  min-width: 0.5rem;
+  text-align: center;
+  margin-right: 0.2rem;
+  padding: 0 0.1rem;
+}
+
+.container .video-box .vod-control, .container .video-box .live-control {
+  width: 100%;
+  height: 0.5rem;
+  background: #000000;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container .video-box .vod-control .left-box i, .container .video-box .live-control .left-box i {
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.container .video-box .vod-control .center-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container .video-box .vod-control .center-box .slider {
+  width: 3rem;
+  margin-right: 0.1rem;
+}
+
+.container .video-box .vod-control .center-box .current-time, .container .video-box .vod-control .center-box .all-time {
+  color: #fff;
+  font-size: 0.1rem;
+}
+
+.container .video-box .vod-control .right-box, .container .video-box .live-control .right-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container .video-box .vod-control .right-box i, .container .video-box .live-control .right-box i {
+  color: #fff;
+  margin-right: 0.1rem;
+}
+
+.container .video-box .vod-control .right-box .text {
+  font-size: 12px;
+  font-style: normal;
+  margin-top: -0.05rem;
+}
+
+
+.container .Barrage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.input-danmaku{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  height: 50px;
+  overflow: hidden;
+  border-top: 2px solid #ccc;
+}
+
+.input-danmaku input{
+  padding: 0 40px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.input-danmaku .van-button{
+  position: absolute;
+  right: 0;
+  top: 12px;
+
+}
