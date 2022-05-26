@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>新UI</title>
+  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  
+  <script type="text/javascript" src="./layui/layui.all.js"></script>
+  
+  <script type="text/javascript" src="js/qs.js"></script>
+  
+</head>
+
+<body>
+  <div class="box" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+    <div id="videoNode" style="width: 800px;height: 500px;background: #000;"></div>
+  </div>
+
+<script type="text/javascript" src="vhall-jssdk-player-2.4.6.js"></script></body>
+<script>
+  var option = {
+    appId: 'd317f559', // 应用ID，必填
+    accountId: 'zx', // 第三方用户ID，必填
+    token: 'vhall', // access_token，必填
+    type: 'vod',
+    videoNode: 'videoNode', // 播放器的容器， div的id
+    vodOption: { recordId: '5259f92a' },
+    language:'en',
+    liveOption: {
+      roomId: 'lss_e82c916c',
+      type: 'hls'
+    }
+  }
+  let vhallplayer
+  VhallPlayer.createInstance(option, res => {
+    window.test = res.vhallplayer;
+  })
+</script>
+
+</html>
