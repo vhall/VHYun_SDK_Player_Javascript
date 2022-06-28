@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0
+}
+
+.layui-btn+.layui-btn {
+  margin: 0;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #f0f2f5;
+}
+
+.login .box {
+  width: 400px;
+  background: #fff;
+  box-shadow: 1px 1px 1px #fff;
+  padding: 10px;
+}
+
+.login .box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main {
+  flex-direction: column;
+  width: 800px;
+  height: 518.71px;
+  margin: 100px auto;
+}
+
+.main .status-box span {
+  margin-right: 20px;
+}
+
+#videoNode {
+  width: 800px;
+  overflow: hidden;
+  background: #000000;
+  height: 500px;
+}
+
+.main #videoNode .vod-controller, .main #videoNode .live-controller {
+  position: absolute;
+  bottom: -50px;
+  z-index: 99;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: space-around;
+  transition: all 0.8s;
+}
+
+.main #videoNode .vod-controller .center-box, .main #videoNode .live-controller .center-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main #videoNode .vod-controller .center-box .slider, .main #videoNode .live-controller .center-box .slider {
+  margin-right: 20px;
+}
+
+.main #videoNode .vod-controller .center-box .current-time, .main #videoNode .live-controller .center-box .current-time {
+  color: #fff;
+  margin-right: 5px;
+}
+
+.main #videoNode .vod-controller .center-box .all-time, .main #videoNode .live-controller .center-box .all-time {
+  margin-left: 5px;
+  color: #fff;
+}
+
+.main #videoNode .vod-controller i, .main #videoNode .live-controller i {
+  width: 25px;
+  height: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.main #videoNode .vod-controller .right-box, .main #videoNode .live-controller .right-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main #videoNode .vod-controller .right-box>i, .main #videoNode .live-controller .right-box>i {
+  margin-right: 20px;
+}
+
+.main #videoNode .vod-controller .right-box .ver-slider, .main #videoNode .live-controller .right-box .ver-slider {
+  width: 40px;
+  margin-left: 5px;
+  margin-bottom: 2px;
+}
+
+.main #videoNode .vod-controller .right-box .volume-box, .main #videoNode .live-controller .right-box .volume-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.main #videoNode .vod-controller .slider, .main #videoNode .live-controller .slider {
+  width: 300px;
+}
+
+.barrageBox {
+  margin-top: 20px;
+}
+
+.qualityList {
+  padding: 35px;
+}
+
+
+.qualityList .q-btnBox button {
+  float: left;
+  margin: 5px 10px 5px 0px
+}
+
+.marqueeOption, .watermarkOption, .markpointsOption {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.layui-colorpicker-trigger-i {
+  color: #1E9FFF;
+}
+
+.barrage-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30px;
+  background: #010001;
+  height: 50px;
+
+}
+
+.barrage-box .barrageInput-box {
+  width: 90%;
+  /* margin-left: 30px; */
+}
+.barrage-box .barrageInput-box i{
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+  z-index: 10;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.barrage-box .barrageInput-box .input-box {
+  background: #181818;
+  border-radius: 18px;
+  height: 36px;
+  padding-left: 40px;
+  padding-right: 90px;
+  position: relative;
+}
+
+.barrage-box .barrageInput-box .input-box input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  height: 36px;
+  line-height: 36px;
+  color: #666;
+  width: 100%;
+}
+
+.barrage-box .barrageInput-box button.sendBarrage {
+  width: 86px;
+  height: 36px;
+  background: rgba(51, 51, 51, 1);
+  border-radius: 18px;
+  border: 0;
+  cursor: pointer;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  outline: none;
+}
+
+.switch #switch-button {
+  display: none;
+}
+
+.switch .button-label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 22px;
+  background: #444444;
+  cursor: pointer;
+}
+
+.switch .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.switch .button-label .text {
+  line-height: 22px;
+  font-size: 14px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.switch .on {
+  color: #fff;
+  display: none;
+  text-indent: 10px;
+}
+
+.switch .off {
+  color: #fff;
+  display: inline-block;
+  text-indent: 25px;
+}
+
+.switch .button-label .circle {
+  left: 0;
+  transition: all 0.1s;
+}
+
+/*
+以下是checked被选中后，紧跟checked标签后面label的样式。
+例如：div+p 选择所有紧接着<div>元素之后的<p>元素
+*/
+.switch #switch-button:checked+label.button-label .circle {
+  left: 30px;
+}
+
+.switch #switch-button:checked+label.button-label .on {
+  display: inline-block;
+}
+
+.switch #switch-button:checked+label.button-label .off {
+  display: none;
+}
+
+.switch #switch-button:checked+label.button-label {
+  background-color: #007AFF;
+}
