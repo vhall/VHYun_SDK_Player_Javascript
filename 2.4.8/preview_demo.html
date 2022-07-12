@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/preview.css" />
+  <link rel="stylesheet" href="./layui/css/layui.css" />
+  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  
+  <script type="text/javascript" src="./layui/layui.all.js"></script>
+  
+  <script type="text/javascript" src="js/qs.js"></script>
+  
+  <title>播放器跑马灯预览</title>
+</head>
+
+<body>
+  <h3 class="player-setting">播放器设置</h3>
+  <div class="preview-setting">
+    <div class="top">
+      <div class="layui-tab layui-tab-brief" lay-filter="">
+        <ul class="layui-tab-title">
+          <li class="layui-this">防录屏跑马灯</li>
+          <!-- <li>水印设置</li> -->
+        </ul>
+        <div class="layui-tab-content"></div>
+      </div>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-config">
+        <div class="layui-form">
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">跑马灯</label>
+            <div class="layui-input-block">
+              <input type="checkbox" class="switch-marquee" name="enable" value="true" required lay-verify="required"
+                lay-filter="enable" lay-skin="switch" checked>
+            </div>
+            <div class="layui-form-mid layui-word-aux">开启后，文字以跑马灯的形式出现在播放器画面中</div>
+          </div>
+
+          <div class="config-items">
+            <div class="layui-form-item">
+              <label class="layui-form-label">展示方式</label>
+              <div class="layui-input-block">
+                <input type="radio" name="displayType" value="0" title="滚动" lay-filter="displayType" checked>
+                <input type="radio" name="displayType" value="1" title="闪动" lay-filter="displayType">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">固定文本</label>
+              <div class="layui-input-block">
+                <input type="text" name="text" value="版权所有，盗版必究" required
+                  lay-verify="required" placeholder="版权所有，盗版必究" autocomplete="off" maxlength="64"
+                  class="layui-input marquee-text"><span class="text-number" style="width: 30px;"></span>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">字体大小</label>
+              <div class="layui-input-block">
+                <input type="text" name="size" value="18"
+                  lay-verify="required|number" placeholder="1~200，默认18" autocomplete="off" maxlength="3"
+                  class="layui-input marquee-size">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">选择颜色</label>
+              <div id='color'></div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">不透明度</label>
+              <div class="layui-input-block">
+                <input class="marquee-alpha" type="range" name="alpha" value="100" max="100" min="0" step="1" lay-filter="alpha" style="margin-top: 10px; width: 300px;"/>
+                <span class="alphaValue">100%</span>
+              </div>
+            </div>
+            <div class="layui-form-item speed">
+              <label class="layui-form-label">移动速度</label>
+              <div class="layui-input-block">
+                <input type="radio" name="speed" value="10000" title="慢" lay-filter="speed">
+                <input type="radio" name="speed" value="6000" title="中" lay-filter="speed" checked>
+                <input type="radio" name="speed" value="3000" title="快" lay-filter="speed">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">显示位置</label>
+              <div class="layui-input-block">
+                <input type="radio" name="position" value="1" title="随机" lay-filter="position" checked>
+                <input type="radio" name="position" value="2" title="上" lay-filter="position">
+                <input type="radio" name="position" value="3" title="中" lay-filter="position">
+                <input type="radio" name="position" value="4" title="下" lay-filter="position">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">显示间隔</label>
+              <div class="layui-input-block">
+                <input type="text" name="interval" value="20"
+                  lay-verify="required" placeholder="0~300, 默认20" autocomplete="off" maxlength="3"
+                  class="layui-input marquee-interval">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="player-wrap">
+        <input name="player-env" value="true" style="display: none;">
+        <div id="videoNode" style="overflow: hidden"></div>
+      </div>
+    </div>
+
+    <div class="layui-hide watermark-wrap"></div>
+  </div>
+  <script src="./js/preview.js"></script>
+<script type="text/javascript" src="vhall-jssdk-player-2.4.8.js"></script></body>
+
+</html>
